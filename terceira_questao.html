@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Custo de Combustível</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        input {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo de Custo de Combustível - 32</h1>
+    <p>Informe a distância da viagem e o preço do combustível:</p>
+
+    <input type="number" id="distancia" placeholder="Distância em km">
+    <input type="number" id="preco" placeholder="Preço por litro (R$)">
+    <button onclick="calcularCusto()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularCusto() {
+            const distancia = parseFloat(document.getElementById("distancia").value);
+            const precoPorLitro = parseFloat(document.getElementById("preco").value);
+            const consumoPorKm = 14;
+
+            if (isNaN(distancia) || isNaN(precoPorLitro) || distancia <= 0 || precoPorLitro <= 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const litrosNecessarios = distancia / consumoPorKm;
+            const custoTotal = litrosNecessarios * precoPorLitro;
+
+            document.getElementById("resultado").innerText = 
+                `Você precisará de ${litrosNecessarios.toFixed(2)} litros. Custo total: R$ ${custoTotal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

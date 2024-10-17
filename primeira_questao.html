@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Hipotenusa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Hipotenusa - 10</h1>
+    <p>Informe os valores dos dois catetos:</p>
+
+    <input type="number" id="cateto1" placeholder="Cateto 1">
+    <input type="number" id="cateto2" placeholder="Cateto 2">
+    <button onclick="calcularHipotenusa()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularHipotenusa() {
+            const cateto1 = parseFloat(document.getElementById("cateto1").value);
+            const cateto2 = parseFloat(document.getElementById("cateto2").value);
+
+            if (isNaN(cateto1) || isNaN(cateto2)) {
+                document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const hipotenusa = Math.sqrt(cateto1 ** 2 + cateto2 ** 2).toFixed(2);
+            document.getElementById("resultado").innerText = `A hipotenusa é: ${hipotenusa}`;
+        }
+    </script>
+</body>
+</html>
